@@ -10,10 +10,12 @@ async function main (){
     console.log (room)
 
     // test find
-    const room = await Room.findOne({ capacity: { $gte: 100 } })
+    const room = await Room.findOne({ capacity: { $gte: 100 } }).populate('building')
     console.log(room)
-    const rooms = await Room.find({ capacity: { $gte: 100 } })
+    const rooms = await Room.find({ capacity: { $gte: 100 } }).populate('building')
     console.log(rooms)
+    const buildings = await Building.find({})
+    console.log(JSON.stringify(buildings))
 }
 
 main().then( () => {
