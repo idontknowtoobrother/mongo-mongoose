@@ -8,6 +8,12 @@ async function main (){
     room.capacity = 20
     room.save()
     console.log (room)
+
+    // test find
+    const room = await Room.findOne({ capacity: { $gte: 100 } })
+    console.log(room)
+    const rooms = await Room.find({ capacity: { $gte: 100 } })
+    console.log(rooms)
 }
 
 main().then( () => {
