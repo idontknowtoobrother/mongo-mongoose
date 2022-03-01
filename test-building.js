@@ -4,8 +4,14 @@ mongoose.connect('mongodb://localhost:27017/example')
 const Room = require('./models/Room')
 const Building = require('./models/Building')
 
+async function clearDatabase(){
+    await Room.deleteMany({})
+    await Building.deleteMany({})
+}
+
 
 async function main(){
+    await clearDatabase()
     const informaticsBuilding = new Building({name: 'Informatics', floor: 11})
     const newInformaticsBuilding = new Building({name: 'New Informatics', floor: 20})
     
